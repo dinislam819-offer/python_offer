@@ -1,0 +1,31 @@
+name: Check Solution
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"  # Your Python version
+
+      - name: Install UV
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Create venv and install deps
+        run: |
+          uv venv --python=3.12 .venv
+          source .venv/bin/activate
+          # uv pip install -r requirements.txt  # For traditional projects
+          # # OR for modern projects with pyproject.toml:
+          uv pip install -e ".[dev]"  # Install with extras
+
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          pytest
