@@ -12,4 +12,3 @@ def find_twin_pairs(X, threshold):
     Список кортежей (i, j, distance), где i < j и distance < threshold
     """
     # TODO: Реализуйте функцию
-    pass

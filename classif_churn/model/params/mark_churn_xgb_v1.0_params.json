@@ -1,0 +1,10 @@
+{
+    "classifier__subsample": 0.6,
+    "classifier__scale_pos_weight": 1,
+    "classifier__n_estimators": 800,
+    "classifier__min_child_weight": 3,
+    "classifier__max_depth": 6,
+    "classifier__learning_rate": 0.01,
+    "classifier__gamma": 0.1,
+    "classifier__colsample_bytree": 0.6
+}
